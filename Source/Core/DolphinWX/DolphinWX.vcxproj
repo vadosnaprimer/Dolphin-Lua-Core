@@ -66,9 +66,13 @@ xcopy /y /d "$(DolphinRootDir)Data\*.lua" "$(BinaryOutputDir)"</Command>
 xcopy /y /d "$(DolphinRootDir)Data\*.lua" $(OutDir)</Command>
     </PreBuildEvent>
     <PreBuildEvent>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      </Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">xcopy /y /d "$(DolphinRootDir)Data\lua5.3.dll" $(OutDir)
+xcopy /y /d "$(DolphinRootDir)Data\*.lua" $(OutDir)</Command>
     </PreBuildEvent>
+    <PostBuildEvent>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">xcopy /y /d "$(DolphinRootDir)Data\lua5.3.dll" "$(BinaryOutputDir)"
+xcopy /y /d "$(DolphinRootDir)Data\*.lua" "$(BinaryOutputDir)"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="LuaScripting\API\bit.cpp" />
